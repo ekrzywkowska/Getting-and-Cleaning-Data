@@ -6,13 +6,13 @@ library(dplyr)
 #     - load data into data frames
 
 getwd()
-setwd("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data-Course-Project")
-train = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data-Course-Project/train/X_train.txt")
-test = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data-Course-Project/test/X_test.txt")
-train_label = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data-Course-Project/train/y_train.txt")
-test_label = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data-Course-Project/test/y_test.txt")
-subject_train = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data-Course-Project/train/subject_train.txt")
-subject_test = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data-Course-Project/test/subject_test.txt")
+setwd("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data")
+train = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data/train/X_train.txt")
+test = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data/test/X_test.txt")
+train_label = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data/train/y_train.txt")
+test_label = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data/test/y_test.txt")
+subject_train = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data/train/subject_train.txt")
+subject_test = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data/test/subject_test.txt")
 
 #Secondly, merge both dataset with label & together
 
@@ -24,7 +24,7 @@ data = rbind(test_df,train_df)
 # 2. Extraxts only the measurements on the mean and standard deviation for each measures
 
 # read columns names in features.txt
-features = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data-Course-Project/features.txt")
+features = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data/features.txt")
 
 colnames(data)[3:563] = features[,2]
 colnames(data)[1] = "subject"
@@ -41,7 +41,7 @@ data2 = data1[, -which(grepl("meanFreq()",names(data1)))]
 data3 = cbind(data[,1:2],data2)
 
 #load activity table for lookup
-activity = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data-Course-Project/activity_labels.txt")
+activity = read.table("C:/Users/Ewa/Documents/Getting-and-Cleaning-Data/activity_labels.txt")
 colnames(activity)[1] = "y"
 
 #merge and lookup activity with column y
